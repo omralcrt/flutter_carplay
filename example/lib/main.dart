@@ -162,6 +162,10 @@ class _MyAppState extends State<MyApp> {
             showsTabBadge: false,
             systemIcon: "gear",
           ),
+          CPPointOfInterestTemplate(
+            title: 'Map',
+            poi: [],
+          ),
         ],
       ),
       animated: true,
@@ -556,7 +560,6 @@ class _MyAppState extends State<MyApp> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 15),
-                primary: Colors.red,
                 padding: const EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 24,

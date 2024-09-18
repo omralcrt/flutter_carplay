@@ -14,7 +14,7 @@ class CPTabBarTemplate {
   final String? title;
 
   /// The templates to show as tabs.
-  final List<CPListTemplate> templates;
+  final List<dynamic> templates;
 
   /// When creating a [CPTabBarTemplate], provide an array of templates for the tab bar to display.
   /// CarPlay treats the array’s templates as root templates, each with its own
@@ -33,6 +33,8 @@ class CPTabBarTemplate {
         "_elementId": _elementId,
         "title": title,
         "templates": templates.map((e) => e.toJson()).toList(),
+        'runtimeTypes':
+            templates.map((e) => "F" + e.runtimeType.toString()).toList(),
       };
 
   String get uniqueId {

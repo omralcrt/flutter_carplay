@@ -229,7 +229,13 @@ public class SwiftFlutterCarplayPlugin: NSObject, FlutterPlugin {
     if (objcRootTemplateType.elementsEqual(String(describing: FCPListTemplate.self))) {
       templates.append(SwiftFlutterCarplayPlugin.objcRootTemplate as! FCPListTemplate)
     } else if (objcRootTemplateType.elementsEqual(String(describing: FCPTabBarTemplate.self))) {
-      templates = (SwiftFlutterCarplayPlugin.objcRootTemplate as! FCPTabBarTemplate).getTemplates()
+      var items = (SwiftFlutterCarplayPlugin.objcRootTemplate as! FCPTabBarTemplate).getTemplates()
+      templates = []
+      for item in items {
+        if (item is FCPListTemplate) {
+            templates.append(item as! FCPListTemplate)
+        }
+      }
     } else {
       return
     }
