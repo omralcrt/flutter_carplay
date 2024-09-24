@@ -164,6 +164,8 @@ class _MyAppState extends State<MyApp> {
           ),
           CPPointOfInterestTemplate(
             title: 'Map',
+            showsTabBadge: false,
+            systemIcon: "map",
             poi: [
               CPPointOfInterest(
                 latitude: 42,
@@ -380,36 +382,40 @@ class _MyAppState extends State<MyApp> {
               }),
         ],
             informationItems: [
-              CPInformationItem(title: "Item title 1", detail: "detail 1"),
-              CPInformationItem(title: "Item title 2", detail: "detail 2"),
+          CPInformationItem(title: "Item title 1", detail: "detail 1"),
+          CPInformationItem(title: "Item title 2", detail: "detail 2"),
         ]));
   }
 
   void openPoiTemplate() {
     FlutterCarplay.push(
-        template: CPPointOfInterestTemplate(title: "Title", poi: [
-          CPPointOfInterest(
-            latitude: 51.5052,
-            longitude: 7.4938,
+        template: CPPointOfInterestTemplate(
             title: "Title",
-            subtitle: "Subtitle",
-            summary: "Summary",
-            detailTitle: "DetailTitle",
-            detailSubtitle: "detailSubtitle",
-            detailSummary: "detailSummary",
-            image: "images/logo_flutter_1080px_clr.png",
-            primaryButton: CPTextButton(
-                title: "Primary",
-                onPress: () {
-                  print("Primary button pressed");
-                }),
-            secondaryButton: CPTextButton(
-                title: "Secondary",
-                onPress: () {
-                  print("Secondary button pressed");
-                }),
-          ),
-        ]),
+            showsTabBadge: false,
+            systemIcon: "house.fill",
+            poi: [
+              CPPointOfInterest(
+                latitude: 51.5052,
+                longitude: 7.4938,
+                title: "Title",
+                subtitle: "Subtitle",
+                summary: "Summary",
+                detailTitle: "DetailTitle",
+                detailSubtitle: "detailSubtitle",
+                detailSummary: "detailSummary",
+                image: "images/logo_flutter_1080px_clr.png",
+                primaryButton: CPTextButton(
+                    title: "Primary",
+                    onPress: () {
+                      print("Primary button pressed");
+                    }),
+                secondaryButton: CPTextButton(
+                    title: "Secondary",
+                    onPress: () {
+                      print("Secondary button pressed");
+                    }),
+              ),
+            ]),
         animated: true);
   }
 
