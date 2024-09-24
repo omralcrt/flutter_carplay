@@ -164,7 +164,20 @@ class _MyAppState extends State<MyApp> {
           ),
           CPPointOfInterestTemplate(
             title: 'Map',
-            poi: [],
+            poi: [
+              CPPointOfInterest(
+                latitude: 42,
+                longitude: 60,
+                title: 'Test',
+                detailTitle: 'Test',
+                primaryButton: CPTextButton(
+                  title: 'Start Charge',
+                  onPress: () {
+                    showAlert();
+                  },
+                ),
+              )
+            ],
           ),
         ],
       ),

@@ -158,7 +158,34 @@ class FlutterCarPlayController {
   void processFCPTextButtonPressed(String elementId) {
     l1:
     for (var t in templateHistory) {
-      if (t.runtimeType.toString() == "CPPointOfInterestTemplate") {
+      if (t.runtimeType.toString() == "CPTabBarTemplate") {
+        for (dynamic p in t.templates) {
+          if (p.runtimeType.toString() == "CPPointOfInterestTemplate") {
+            for (CPPointOfInterest p in p.poi) {
+              if (p.primaryButton != null &&
+                  p.primaryButton!.uniqueId == elementId) {
+                p.primaryButton!.onPress();
+                break l1;
+              }
+              if (p.secondaryButton != null &&
+                  p.secondaryButton!.uniqueId == elementId) {
+                p.secondaryButton!.onPress();
+                break l1;
+              }
+            }
+          } else {
+            if (p.runtimeType.toString() == "CPInformationTemplate") {
+              l2:
+              for (CPTextButton b in p.actions) {
+                if (b.uniqueId == elementId) {
+                  b.onPress();
+                  break l2;
+                }
+              }
+            }
+          }
+        }
+      } else if (t.runtimeType.toString() == "CPPointOfInterestTemplate") {
         for (CPPointOfInterest p in t.poi) {
           if (p.primaryButton != null &&
               p.primaryButton!.uniqueId == elementId) {
@@ -171,9 +198,7 @@ class FlutterCarPlayController {
             break l1;
           }
         }
-      }
-      else
-      {
+      } else {
         if (t.runtimeType.toString() == "CPInformationTemplate") {
           l2:
           for (CPTextButton b in t.actions) {
@@ -186,6 +211,4 @@ class FlutterCarPlayController {
       }
     }
   }
-  }
-
-
+}
